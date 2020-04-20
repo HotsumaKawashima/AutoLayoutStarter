@@ -10,6 +10,13 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    let purpleBox: UIView = {
+        let purple = UIView(frame: CGRect.zero)
+        purple.translatesAutoresizingMaskIntoConstraints = false
+        purple.backgroundColor = .purple
+        return purple
+    }()
+
   let mainView: UIView = {
     let main = UIView()
     // important when setting contraints programmatically
@@ -61,6 +68,14 @@ class ViewController: UIViewController {
     widthAnchor = mainView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7, constant: 0)
     widthAnchor?.isActive = true
     
+    mainView.addSubview(purpleBox)
+    NSLayoutConstraint.activate([
+        purpleBox.heightAnchor.constraint(equalToConstant: 50),
+        purpleBox.widthAnchor.constraint(equalTo: mainView.widthAnchor, multiplier: 0.7),
+        purpleBox.bottomAnchor.constraint(equalTo: mainView.bottomAnchor, constant: -30),
+        purpleBox.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: -30)
+    ])
+
     heightAnchor = mainView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.7, constant: 0)
     heightAnchor?.isActive = true
     
